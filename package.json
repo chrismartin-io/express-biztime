@@ -1,7 +1,6 @@
 {
   "name": "express-biztime",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,6 +11,16 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "pg": "^7.12.1"
-  }
+    "pg": "^7.12.1",
+    "supertest": "^4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kayjitsu/express-biztime.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kayjitsu/express-biztime/issues"
+  },
+  "homepage": "https://github.com/kayjitsu/express-biztime#readme",
+  "description": ""
 }

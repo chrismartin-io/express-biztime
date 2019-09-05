@@ -30,15 +30,23 @@ router.get('/:code', async function (req, res, next) {
 
   try {
     const code = req.params.code;
-    const results = await db.query(
+    const companyResults = await db.query(
       `SELECT * FROM companies 
       WHERE code = $1`, [code]);
 
-    if (results.rowCount < 1) {
+    const invoicesResults = await db.query(
+      `SELECT * FROM invoices
+        WHERE comp_code = $1`, [code]
+    )
+
+    if (companyResults.rowCount < 1) {
       return next();
     }
+
+    companyResults.rows[0].invoices = invoicesResults.rows
+
     return res.json({
-      'company': results.rows[0]
+      'company': companyResults.rows[0]
     })
   } catch (err) {
     return next(err);
@@ -113,18 +121,6 @@ router.delete('/:code', async function (req, res, next) {
     return next(err);
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
